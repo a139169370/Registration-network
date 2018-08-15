@@ -12,30 +12,83 @@
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 	<script type="text/javascript">
 		jQuery(document).ready(function($) {
-			var isBoy = true;		//性别是否为boy
-			$("input[type='button']").click(function(event) {
+			var isBoy = false;		//性别
+			var isGirl = false;
+			var plateNum = 0;		//资源部板块选择数目
+			var maxPlateNum = 2;	//资源部板块选择上限数量
+			var sectionNum = 0;		//选择部门数目
+			var maxSectionNum = 2;	//选择部门最大数目
+			var isResouce = false;	//是否选择了资源部
+
+			$(".resources-plate").attr('disabled', 'disabled');
+			$(".section").click(function(event) {
+				if ($(this).hasClass('button-change')) {	//取消点击
+					sectionNum--;
+					$(this).removeClass('button-change');
+					if ($(this).hasClass('resouce')) {		//如果点击的是资源部
+						$(".resources-plate").removeClass('button-change');
+						isResouce = false;
+						$(".resources-plate").attr('disabled', 'disabled');
+						plateNum = 0;
+					}
+				}else if (sectionNum < maxSectionNum){		//增加点击状态
+					if ($(this).hasClass('resouce')) {		//如果点击的是资源部
+						isResouce = true;
+						$(".resources-plate").removeAttr('disabled');
+					}
+					sectionNum++;
+					$(this).addClass('button-change');
+				}else{
+					alert("选择部门意愿不得超过2个！");
+				}
+			});
+
+			// 选择资源部板块
+			$(".resources-plate").click(function(event) {
 				if ($(this).hasClass('button-change')) {
 					$(this).removeClass('button-change');
-				}else{
+					plateNum--;
+				}else if (plateNum < maxPlateNum & !$(this).hasClass('button-change')){
 					$(this).addClass('button-change');
+					plateNum++;
+				}else{
+					alert("选择资源部板块不得超过2个！");
 				}
 			});
 
 			// 性别选择
 			$(".boy-clicked-img").click(function(event) {
-				if (!isBoy) {
+				if (!isBoy & !isGirl) {
+					$(this).css('opacity', '1');
+					isBoy = true;
+					isGirl = false;
+				}
+				if (!isBoy & isGirl) {
 					$(this).css('opacity', '1');		//img透明度
 					$(".girl-clicked-img").css('opacity', '0');
 					isBoy = true;
+					isGirl = false;
 				}
 			});
 
 			$(".girl-clicked-img").click(function(event) {
-				if (isBoy) {
+				if (!isBoy & !isGirl) {
+					$(this).css('opacity', '1');
+					isBoy = false;
+					isGirl = true;
+				}
+				if (isBoy & !isGirl) {
 					$(this).css('opacity', '1');
 					$(".boy-clicked-img").css('opacity', '0');
 					isBoy = false;
+					isGirl = true;
 				}
+			});
+
+			$(".button-submit").click(function(event) {		//提交验证
+				$("#form").submit(function(event) {
+					return true;
+				});
 			});
 
 		});
@@ -44,6 +97,7 @@
 		body{
 			font-family: "思源黑体";
 			/* background-color: #310863; */
+			max-width: 1520px;
 			background-image: url(imgs/111.gif);
 		}
 		.main{
@@ -54,7 +108,7 @@
 			margin-right: auto;
 			background-image: url(imgs/bg.gif);
 		}
-		.main form input[type="text"]{
+		.main form input[type="text"],input[type="number"]{
 			width: 320px;
 			height: 70px;
 			position: relative;
@@ -93,6 +147,10 @@
 			border-radius:80px;
 			top: 2050px;
 			font-size: 24px;
+		}
+		.col-3{
+			float: left;
+			width: 25%;
 		}
 		.col-4{
 			float: left;
@@ -136,15 +194,17 @@
 		}
 		.boy-clicked-img{
 			position: relative;
-			top: 369px;
+			top: 309px;
 			left: 159px;
 			width: 120px;
 			height: 190px;
+			opacity: 0;   /* img透明度 */
+			filter:alpha(opacity=0);
 		}
 		.girl-clicked-img{
 			position: relative;
-			top: 376px;
-			left: 310px;
+			top: 314px;
+			left: 311px;
 			width: 120px;
 			height: 190px;
 			opacity: 0;   /* img透明度 */
@@ -152,7 +212,7 @@
 		}
 		textarea{
 			position: relative;
-			top: 2290px;
+			top: 2230px;
 			left: 57px;
 			width: 560px;
 			height: 290px;
@@ -164,16 +224,16 @@
 			background: none;
 			overflow: hidden;
 		}
-		button[type="submit"]{
+		.button-submit{
 			position: relative;
 			text-align: center;
-			top: 2650px;
-			left: 275px;
+			top: 2550px;
+			left: 264px;
 			width: 150px;
 			height: 60px;
 			border-radius:15px;
 			color: rgba(255, 255, 255, 1);
-			font-size: 40px;
+			font-size: 28px;
 			font-family: "汉仪棱心体简";
 		}
 	</style>
@@ -181,80 +241,95 @@
 <body>
 	<div>
 		<div class="main">
-			<form action="index_submit" method="get" accept-charset="utf-8">
+			<form action="index_submit" method="get" accept-charset="utf-8" id="form">
 				<!-- 个人信息输入表单 -->
 				<input type="text" placeholder="请输入姓名" id="name">
-				<input type="text" placeholder="请输入学号" id="number">
+				<input type="number" placeholder="请输入学号" id="number">
 				<input type="text" placeholder="请输入系别专业" id="major">
-				<input type="text" placeholder="请输入联系方式" id="phone">
-				<input type="text" placeholder="请输入QQ号" id="qq">
+				<input type="number" placeholder="请输入联系方式" id="phone">
+				<input type="number" placeholder="请输入QQ号" id="qq">
 				<!-- 部门选项按钮第一行 -->
 				<div class="row button text-center">
 					<div class="col-4">
-						<input type="button" name="" value="宣传部">
+						<input type="button" name="" value="宣传部" class="section">
 					</div>
 					<div class="col-4">
-						<input type="button" name="" value="秘书部">
+						<input type="button" name="" value="秘书部" class="section">
 					</div>
 					<div class="col-4">
-						<input type="button" name="" value="外联部">
+						<input type="button" name="" value="外联部" class="section">
 					</div>
 				</div>
 				<!-- 第二行 -->
 				<div class="row button text-center">
 					<div class="col-4 col-offset-2">
-						<input type="button" name="" value="技术部">
+						<input type="button" name="" value="技术部" class="section">
 					</div>
 					<div class="col-4">
-						<input type="button" name="" value="资源部">
+						<input type="button" name="" value="资源部" class="section resouce">
 					</div>
 				</div>
 				<!-- 资源部按钮第一行 -->
 				<div class="row button-for-resouce text-center">
-					<div class="col-4">
-						<input type="button" name="" value="软件">
+					<div class="col-3">
+						<input type="button" name="" value="软件" class="resources-plate">
 					</div>
-					<div class="col-4">
-						<input type="button" name="" value="体育">
+					<div class="col-3">
+						<input type="button" name="" value="体育" class="resources-plate">
 					</div>
-					<div class="col-4">
-						<input type="button" name="" value="动漫">
+					<div class="col-3">
+						<input type="button" name="" value="动漫" class="resources-plate">
+					</div>
+					<div class="col-3">
+						<input type="button" name="" value="音乐" class="resources-plate">
 					</div>
 				</div>
 				<!-- 第二行 -->
 				<div class="row button-for-resouce text-center">
-					<div class="col-4">
-						<input type="button" name="" value="电影">
+					<div class="col-3">
+						<input type="button" name="" value="电影" class="resources-plate">
 					</div>
-					<div class="col-4">
-						<input type="button" name="" value="日韩">
+					<div class="col-3">
+						<input type="button" name="" value="日剧" class="resources-plate">
 					</div>
-					<div class="col-4">
-						<input type="button" name="" value="音乐">
+					<div class="col-3">
+						<input type="button" name="" value="韩国" class="resources-plate">
+					</div>
+					<div class="col-3">
+						<input type="button" name="" value="欧美" class="resources-plate">
 					</div>
 				</div>
 				<!-- 第三行 -->
 				<div class="row button-for-resouce text-center">
-					<div class="col-4">
-						<input type="button" name="" value="学习视频">
+					<div class="col-3">
+						<input type="button" name="" value="学习" class="resources-plate">
 					</div>
-					<div class="col-4">
-						<input type="button" name="" value="电视剧">
+					<div class="col-3">
+						<input type="button" name="" value="内综" class="resources-plate">
 					</div>
-					<div class="col-4">
-						<input type="button" name="" value="综艺">
+					<div class="col-3">
+						<input type="button" name="" value="港综" class="resources-plate">
+					</div>
+					<div class="col-3">
+						<input type="button" name="" value="港剧" class="resources-plate">
 					</div>
 				</div>
-				
+				<!-- 第四行 -->
+				<div class="row button-for-resouce text-center">
+					<div class="col-3">
+						<input type="button" name="" value="内剧" class="resources-plate">
+					</div>
+				</div>
+				<!-- 性别选择 -->
 				<div class="row">
 					<img src="imgs/boy-clicked.png" alt="" class="boy-clicked-img">
 					<img src="imgs/girl-clicked.png" alt="" class="girl-clicked-img">
 				</div>
-				
+				<!-- 自我介绍 -->
 				<textarea name="introduce" rows="10" cols="30"></textarea>
-
+				<!-- 提交button -->
 				<div class="row">
-					<button type="submit" class="button-submit">提交</button>
+					<button type="button" class="button-submit">提交</button>
 				</div>
 			</form>
 		</div>
