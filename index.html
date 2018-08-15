@@ -85,12 +85,6 @@
 				}
 			});
 
-			$(".button-submit").click(function(event) {		//提交验证
-				$("#form").submit(function(event) {
-					return true;
-				});
-			});
-
 		});
 	</script>
 	<style type="text/css" media="screen">
@@ -243,11 +237,11 @@
 		<div class="main">
 			<form action="index_submit" method="get" accept-charset="utf-8" id="form">
 				<!-- 个人信息输入表单 -->
-				<input type="text" placeholder="请输入姓名" id="name">
-				<input type="number" placeholder="请输入学号" id="number">
-				<input type="text" placeholder="请输入系别专业" id="major">
-				<input type="number" placeholder="请输入联系方式" id="phone">
-				<input type="number" placeholder="请输入QQ号" id="qq">
+				<input type="text" placeholder="请输入姓名" id="name" required="required">
+				<input type="number" placeholder="请输入学号" id="number" required="required">
+				<input type="text" placeholder="请输入系别专业" id="major" required="required">
+				<input type="number" placeholder="请输入联系方式" id="phone" required="required">
+				<input type="number" placeholder="请输入QQ号" id="qq" required="required">
 				<!-- 部门选项按钮第一行 -->
 				<div class="row button text-center">
 					<div class="col-4">
@@ -326,10 +320,10 @@
 					<img src="imgs/girl-clicked.png" alt="" class="girl-clicked-img">
 				</div>
 				<!-- 自我介绍 -->
-				<textarea name="introduce" rows="10" cols="30"></textarea>
+				<textarea name="introduce" rows="10" cols="30" required="required"></textarea>
 				<!-- 提交button -->
 				<div class="row">
-					<button type="button" class="button-submit">提交</button>
+					<button type="submit" class="button-submit">提交</button>
 				</div>
 			</form>
 		</div>
