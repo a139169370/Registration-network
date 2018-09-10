@@ -5,12 +5,12 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>报名网</title>
+	<title>NA报名网</title>
 	<script src="js/jquery-3.2.1.js"></script>
 	<script type="text/javascript" src="js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="js/bootstrap.js"></script>
 	<link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-	<script type="text/javascript">
+		<script type="text/javascript">
 		jQuery(document).ready(function($) {
 			var isBoy = false;		//性别
 			var isGirl = false;
@@ -90,79 +90,31 @@
 	<style type="text/css" media="screen">
 		body{
 			font-family: "思源黑体";
-			/* background-color: #310863; */
-			max-width: 1520px;
-			background-image: url(imgs/111.gif);
-		}
-		.main{
-			max-width: 677px;
-			min-width: 677px;
-			min-height: 3751px;
-			margin-left: auto;
-			margin-right: auto;
-			background-image: url(imgs/bg.gif);
-		}
-		.main form input[type="text"],input[type="number"]{
-			width: 320px;
-			height: 70px;
-			position: relative;
-			border:0px ;
-			text-align: left;
+			background-image: url(imgs/222.gif);
+			background-color: rgba(255, 255, 255, 1);
 			color: rgba(255, 255, 255, 1);
-			font-size: 28px;
+		}
+		.button-change,.button-submit{
+			background: -webkit-linear-gradient(left, #E255FF, #41A6F9);
+			background: -o-linear-gradient(left, #E255FF, #41A6F9);
+			background: linear-gradient(to right, #E255FF, #41A6F9);
+		}
+		#container{
+			background-color: rgba(255, 255, 255, 1)
+		}
+		#topImg,#introduce,.title{
+			padding-top: 3%;
+			padding-bottom: 3%;
+		}
+		input[type="text"]{
+			color: rgba(255, 255, 255, 1);
+			font-size: 25px;
 			border-radius:5ex;
 			background: none;
 		}
-		#name{
-			top: 1220px;
-			left: 253px;
+		.input{
+			padding-top: 3%;
 		}
-		#number{
-			top: 1360px;
-			left: -70px;
-		}
-		#major{
-			top: 1430px;
-			left: 253px;
-		}
-		#phone{
-			top: 1570px;
-			left: -70px;
-		}
-		#qq{
-			top: 1640px;
-			left: 253px;
-		}
-		.button div input{				/* button */
-			position: relative;
-			margin: 10px;
-			width: 120px;
-			height: 40px;
-			border-radius:80px;
-			top: 2050px;
-			font-size: 24px;
-		}
-		.col-3{
-			float: left;
-			width: 25%;
-		}
-		.col-4{
-			float: left;
-			width: 33.33333333%;
-		}
-		.col-offset-2{
-			margin-left: 16.66666667%;
-		}
-		.button-for-resouce div input{
-			position: relative;
-			margin: 10px;
-			width: 120px;
-			height: 40px;
-			border-radius:80px;
-			top: 2180px;
-			font-size: 24px;
-		}
-
 		input[type="button"]{
 			-webkit-animation-name: bluePulse;
 			-webkit-animation-duration: 4s;
@@ -181,155 +133,217 @@
 			-moz-transition: background-color 300ms ease-out;
 			transition: background-color 300ms ease-out;
 		}
-		.button-change,.button-submit{
-			background: -webkit-linear-gradient(left, #E255FF, #41A6F9);
-			background: -o-linear-gradient(left, #E255FF, #41A6F9);
-			background: linear-gradient(to right, #E255FF, #41A6F9);
-		}
-		.boy-clicked-img{
-			position: relative;
-			top: 309px;
-			left: 159px;
+		.button div input{				/* button */
+			margin: 10px;
 			width: 120px;
-			height: 190px;
-			opacity: 0;   /* img透明度 */
-			filter:alpha(opacity=0);
+			height: 40px;
+			border-radius:80px;
+			font-size: 24px;
 		}
-		.girl-clicked-img{
-			position: relative;
-			top: 314px;
-			left: 311px;
+		.button-for-resouce div input{
+			margin: 10px;
 			width: 120px;
-			height: 190px;
-			opacity: 0;   /* img透明度 */
-			filter:alpha(opacity=0);
+			height: 40px;
+			border-radius:80px;
+			font-size: 24px;
 		}
 		textarea{
-			position: relative;
-			top: 2230px;
-			left: 57px;
-			width: 560px;
-			height: 290px;
-			border:0px ;
+			width: 650px;
+			height: 300px;
+			border-style:solid;
+			border-color: #E255FF, #41A6F9;
 			text-align: left;
 			color: rgba(255, 255, 255, 1);
 			font-size: 24px;
-			border-radius:5px;
+			border-radius:30px;
 			background: none;
 			resize: none;
 			overflow: hidden;
+			line-height: 1.5;
 		}
 		.button-submit{
-			position: relative;
-			text-align: center;
-			top: 2550px;
-			left: 264px;
+			background: -webkit-linear-gradient(left, #E255FF, #41A6F9);
+			background: -o-linear-gradient(left, #E255FF, #41A6F9);
+			background: linear-gradient(to right, #E255FF, #41A6F9);
 			width: 150px;
 			height: 60px;
 			border-radius:15px;
 			color: rgba(255, 255, 255, 1);
 			font-size: 28px;
 			font-family: "汉仪棱心体简";
+			position: relative;
+			top: -100px;
+		}
+		#bottom{
+			position: relative;
+			top: 100px;
 		}
 	</style>
 </head>
 <body>
-	<div>
-		<div class="main">
-			<form action="index_submit" method="get" accept-charset="utf-8" id="form">
-				<!-- 个人信息输入表单 -->
-				<input type="text" placeholder="请输入姓名" id="name" required="required">
-				<input type="number" placeholder="请输入学号" id="number" required="required">
-				<input type="text" placeholder="请输入系别专业" id="major" required="required">
-				<input type="number" placeholder="请输入联系方式" id="phone" required="required">
-				<input type="number" placeholder="请输入QQ号" id="qq" required="required">
+	<div class="main">
+		<div class="container">
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="topImg">
+				<img src="imgs/logo.png" alt="" class="img-responsive center-block">
+			</div>
+
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="topImg">
+				<img src="imgs/wudabumen.png" alt="" class="img-responsive center-block">
+			</div>
+
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="introduce">
+				<img src="imgs/jiesao.png" alt="" class="img-responsive center-block">
+			</div>
+
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="">
+				<img src="imgs/xinxiluru.png" alt="" class="img-responsive center-block">
+			</div>
+
+			<div class="row col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1 col-md-offset-1 col-md-10 text-left input">
+				<div class="col-lg-6  col-md-6">
+					<img src="imgs/xingbie.png" alt="" class="">
+					<input type="text" name="" value="" placeholder="请输入性别" required="required">
+				</div>
+				<div class="col-lg-6 col-sm-6 col-md-6">
+					<img src="imgs/xingming.png" alt="" class="">
+				<input type="text" name="" value="" placeholder="请输入姓名" required="required">
+				</div>
+			</div>
+
+			<div class="row col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1 col-md-offset-1 col-md-10 text-left input">
+				<div class="col-lg-6 col-sm-6 col-md-6">
+					<img src="imgs/xuehao.png" alt="" class="text-center">
+					<input type="text" name="" value="" placeholder="请输入学号" required="required">
+				</div>
+				<div class="col-lg-6 col-sm-6 col-md-6">
+					<img src="imgs/xibiezhuanye.png" alt="" class="">
+				<input type="text" name="" value="" placeholder="请输入系别专业" required="required">
+				</div>
+			</div>
+
+			<div class="row col-lg-10 col-lg-offset-1 col-sm-10 col-sm-offset-1 col-md-offset-1 col-md-10 text-left input">
+				<div class="col-lg-6 col-sm-6 col-md-6">
+					<img src="imgs/lianxifangshi.png" alt="" class="">
+					<input type="text" name="" value="" placeholder="请输入联系方式" required="required">
+				</div>
+				<div class="col-lg-6 col-sm-6 col-md-6">
+					<img src="imgs/QQ.png" alt="" class="">
+				<input type="text" name="" value="" placeholder="请输入QQ" required="required">
+				</div>
+			</div>
+
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12 title">
+				<img src="imgs/join.png" alt="" class="img-responsive center-block">
+			</div>
+
+			<div>
 				<!-- 部门选项按钮第一行 -->
-				<div class="row button text-center">
-					<div class="col-4">
+				<div class="row button text-center col-lg-12">
+					<div class="col-lg-3 col-lg-offset-2">
 						<input type="button" name="" value="宣传部" class="section">
 					</div>
-					<div class="col-4">
+					<div class="col-lg-2">
 						<input type="button" name="" value="秘书部" class="section">
 					</div>
-					<div class="col-4">
+					<div class="col-lg-3">
 						<input type="button" name="" value="外联部" class="section">
 					</div>
 				</div>
 				<!-- 第二行 -->
-				<div class="row button text-center">
-					<div class="col-4 col-offset-2">
+				<div class="row button text-center col-lg-12">
+					<div class="col-lg-3 col-lg-offset-3">
 						<input type="button" name="" value="技术部" class="section">
 					</div>
-					<div class="col-4">
+					<div class="col-lg-3">
 						<input type="button" name="" value="资源部" class="section resouce">
 					</div>
 				</div>
+
+				<div class="row text-center col-md-12 col-sm-12 col-lg-12 title">
+					<h3>
+						若选择了资源部，请选择一至两个你意愿负责的板块：
+					</h3>
+				</div>
+
 				<!-- 资源部按钮第一行 -->
-				<div class="row button-for-resouce text-center">
-					<div class="col-3">
+				<div class="row button-for-resouce text-center col-lg-12">
+					<div class="col-lg-2 col-lg-offset-2">
 						<input type="button" name="" value="软件" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="体育" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="动漫" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="音乐" class="resources-plate">
 					</div>
 				</div>
 				<!-- 第二行 -->
-				<div class="row button-for-resouce text-center">
-					<div class="col-3">
+				<div class="row button-for-resouce text-center col-lg-12">
+					<div class="col-lg-2 col-lg-offset-2">
 						<input type="button" name="" value="电影" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="日剧" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="韩国" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="欧美" class="resources-plate">
 					</div>
 				</div>
 				<!-- 第三行 -->
-				<div class="row button-for-resouce text-center">
-					<div class="col-3">
+				<div class="row button-for-resouce text-center col-lg-12">
+					<div class="col-lg-2 col-lg-offset-2">
 						<input type="button" name="" value="学习" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="内综" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="港综" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="港剧" class="resources-plate">
 					</div>
 				</div>
 				<!-- 第四行 -->
-				<div class="row button-for-resouce text-center">
-					<div class="col-3">
+				<div class="row button-for-resouce text-center col-lg-12">
+					<div class="col-lg-2 col-lg-offset-2">
 						<input type="button" name="" value="内剧" class="resources-plate">
 					</div>
-					<div class="col-3">
+					<div class="col-lg-2">
 						<input type="button" name="" value="泰剧" class="resources-plate">
 					</div>
 				</div>
-				<!-- 性别选择 -->
-				<div class="row">
-					<img src="imgs/boy-clicked.png" alt="" class="boy-clicked-img">
-					<img src="imgs/girl-clicked.png" alt="" class="girl-clicked-img">
+			</div>
+
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12 title">
+				<img src="imgs/show.png" alt="" class="img-responsive center-block">
+			</div>
+
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12">
+				<textarea name="" rows="10" cols="30" required="required"></textarea>
+			</div>
+
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12 title">
+				<div class="col-lg-5 col-lg-offset-2" id="bottom">
+					<h1>
+						请确认无误后提交喔~
+					</h1>
+					
+				</div>	
+				<div class="col-lg-5">
+					<img src="imgs/robot.png" alt="" class="img-responsive center-block">
 				</div>
-				<!-- 自我介绍 -->
-				<textarea name="introduce" rows="10" cols="30" required="required"></textarea>
-				<!-- 提交button -->
-				<div class="row">
-					<button type="submit" class="button-submit">提交</button>
-				</div>
-			</form>
+			</div>
+			
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="submit">
+				<button type="submit" class="button-submit">提交</button>
+			</div>
 		</div>
 	</div>
 </body>
