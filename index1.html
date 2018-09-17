@@ -85,109 +85,43 @@
 				}
 			});
 
+			is_jump();
+			function is_jump(){			//宽度小于677px则跳转到手机端
+				console.log($("body").width());
+				if ($("body").width() <= 677) {
+					$(location).attr('href', '/na/index.html');		//此处为跳转网址，可以自行修改
+				}
+			}
 		});
+
+				// 弹出层
+		function ShowDiv(){			//显示弹出层
+			$("#fade").css('display','block');
+			$("#MyDiv").css('display','block');
+			$("#fade").width($("body").width());
+			$("#fade").height($(document).height()); 
+		}
+
+		function CloseDiv(){ 		//关闭弹出层
+			$("#fade").css('display','none');
+			$("#MyDiv").css('display','none'); 
+		} 
 	</script>
 	<style type="text/css" media="screen">
-		body{
-			font-family: "思源黑体";
-			background-image: url(imgs/222.gif);
-			background-color: rgba(255, 255, 255, 1);
-			color: rgba(255, 255, 255, 1);
-		}
-		.button-change,.button-submit{
-			background: -webkit-linear-gradient(left, #E255FF, #41A6F9);
-			background: -o-linear-gradient(left, #E255FF, #41A6F9);
-			background: linear-gradient(to right, #E255FF, #41A6F9);
-		}
-		#container{
-			background-color: rgba(255, 255, 255, 1)
-		}
-		#topImg,#introduce,.title{
-			padding-top: 3%;
-			padding-bottom: 3%;
-		}
-		input[type="text"]{
-			color: rgba(255, 255, 255, 1);
-			font-size: 25px;
-			border-radius:5ex;
-			background: none;
-		}
-		.input{
-			padding-top: 3%;
-		}
-		input[type="button"]{
-			-webkit-animation-name: bluePulse;
-			-webkit-animation-duration: 4s;
-			background-color: #300556;
-			color: white;
-			-webkit-animation-duration: 2s;
-			-webkit-animation-iteration-count: infinite;
-			cursor: pointer;margin-right: 0.5em;
-			border-radius: 4px;
-    		box-shadow: 0 -2px 0 rgba(0,0,0,0.2) inset !important;
-    		-moz-box-shadow: 0 -2px 0 rgba(0,0,0,0.2) inset;
-   			display: inline-block;
-			-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
-			box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
-			-webkit-transition: background-color 300ms ease-out;
-			-moz-transition: background-color 300ms ease-out;
-			transition: background-color 300ms ease-out;
-		}
-		.button div input{				/* button */
-			margin: 10px;
-			width: 120px;
-			height: 40px;
-			border-radius:80px;
-			font-size: 24px;
-		}
-		.button-for-resouce div input{
-			margin: 10px;
-			width: 120px;
-			height: 40px;
-			border-radius:80px;
-			font-size: 24px;
-		}
-		textarea{
-			width: 650px;
-			height: 300px;
-			border-style:solid;
-			border-color: #E255FF, #41A6F9;
-			text-align: left;
-			color: rgba(255, 255, 255, 1);
-			font-size: 24px;
-			border-radius:30px;
-			background: none;
-			resize: none;
-			overflow: hidden;
-			line-height: 1.5;
-		}
-		.button-submit{
-			background: -webkit-linear-gradient(left, #E255FF, #41A6F9);
-			background: -o-linear-gradient(left, #E255FF, #41A6F9);
-			background: linear-gradient(to right, #E255FF, #41A6F9);
-			width: 150px;
-			height: 60px;
-			border-radius:15px;
-			color: rgba(255, 255, 255, 1);
-			font-size: 28px;
-			font-family: "汉仪棱心体简";
-			position: relative;
-			top: -100px;
-		}
-		#bottom{
-			position: relative;
-			top: 100px;
-		}
+		@import url(css/index1.css);
 	</style>
 </head>
 <body>
 	<div class="main">
 		<div class="container">
-			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="topImg">
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12 topImg">
+				<img src="imgs/hb.jpg" alt="" class="img-responsive center-block">
+			</div>
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12 topImg">
 				<img src="imgs/logo.png" alt="" class="img-responsive center-block">
 			</div>
 
-			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="topImg">
+			<div class="row text-center col-md-12 col-sm-12 col-lg-12 topImg">
 				<img src="imgs/wudabumen.png" alt="" class="img-responsive center-block">
 			</div>
 
@@ -342,8 +276,21 @@
 			</div>
 			
 			<div class="row text-center col-md-12 col-sm-12 col-lg-12" id="submit">
-				<button type="submit" class="button-submit">提交</button>
+				<button type="submit" class="button-submit"  onclick="ShowDiv();">提交</button>
 			</div>
+		</div>
+	</div>
+	<div id="fade" class="black_overlay"></div> 	<!-- 第二个参数,灰色背景 -->
+	<div id="MyDiv" class="white_content"> 			<!-- 第一个参数，弹出层主体 -->
+		<div style="text-align: right; cursor: default; height: 40px;"> 
+			<a class="aui_close" href="javascript:void(0);"  onclick="CloseDiv('MyDiv','fade')">×</a>
+		</div> 
+		
+		<div class="text-center">
+			<h2>恭喜你，报名成功！更多资讯请扫描二维码添加NA官微了解喔！</h2>
+		</div>
+		<div class="text-center">
+			<img src="imgs/ewm.jpg" alt="">
 		</div>
 	</div>
 </body>

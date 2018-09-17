@@ -85,157 +85,39 @@
 				}
 			});
 
+			is_jump();
+			function is_jump(){			//宽度大于677px则跳转到PC端
+				console.log($("body").width());
+				if ($("body").width() >= 677) {
+					console.log($("body").width());
+					$(location).attr('href', '/na/index1.html');		//此处为跳转网址，可以自行修改
+				}
+			}
 		});
-	</script>
-	<style type="text/css" media="screen">
-		body{
-			font-family: "思源黑体";
-			/* background-color: #310863; */
-			max-width: 1520px;
-			background-image: url(imgs/111.gif);
-		}
-		.main{
-			max-width: 677px;
-			min-width: 677px;
-			min-height: 3751px;
-			margin-left: auto;
-			margin-right: auto;
-			background-image: url(imgs/bg.gif);
-		}
-		.main form input[type="text"],input[type="number"]{
-			width: 320px;
-			height: 70px;
-			position: relative;
-			border:0px ;
-			text-align: left;
-			color: rgba(255, 255, 255, 1);
-			font-size: 28px;
-			border-radius:5ex;
-			background: none;
-		}
-		#name{
-			top: 1220px;
-			left: 253px;
-		}
-		#number{
-			top: 1360px;
-			left: -70px;
-		}
-		#major{
-			top: 1430px;
-			left: 253px;
-		}
-		#phone{
-			top: 1570px;
-			left: -70px;
-		}
-		#qq{
-			top: 1640px;
-			left: 253px;
-		}
-		.button div input{				/* button */
-			position: relative;
-			margin: 10px;
-			width: 120px;
-			height: 40px;
-			border-radius:80px;
-			top: 2050px;
-			font-size: 24px;
-		}
-		.col-3{
-			float: left;
-			width: 25%;
-		}
-		.col-4{
-			float: left;
-			width: 33.33333333%;
-		}
-		.col-offset-2{
-			margin-left: 16.66666667%;
-		}
-		.button-for-resouce div input{
-			position: relative;
-			margin: 10px;
-			width: 120px;
-			height: 40px;
-			border-radius:80px;
-			top: 2180px;
-			font-size: 24px;
+
+						// 弹出层
+		function ShowDiv(){			//显示弹出层
+			$("#fade").css('display','block');
+			$("#MyDiv").css('display','block');
+			//$("#fade").width($("body").width());
+			$("#fade").height($(document).height()); 
 		}
 
-		input[type="button"]{
-			-webkit-animation-name: bluePulse;
-			-webkit-animation-duration: 4s;
-			background-color: #300556;
-			color: white;
-			-webkit-animation-duration: 2s;
-			-webkit-animation-iteration-count: infinite;
-			cursor: pointer;margin-right: 0.5em;
-			border-radius: 4px;
-    		box-shadow: 0 -2px 0 rgba(0,0,0,0.2) inset !important;
-    		-moz-box-shadow: 0 -2px 0 rgba(0,0,0,0.2) inset;
-   			display: inline-block;
-			-webkit-box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
-			box-shadow: 0 1px 0 rgba(255,255,255,0.5) inset;
-			-webkit-transition: background-color 300ms ease-out;
-			-moz-transition: background-color 300ms ease-out;
-			transition: background-color 300ms ease-out;
-		}
-		.button-change,.button-submit{
-			background: -webkit-linear-gradient(left, #E255FF, #41A6F9);
-			background: -o-linear-gradient(left, #E255FF, #41A6F9);
-			background: linear-gradient(to right, #E255FF, #41A6F9);
-		}
-		.boy-clicked-img{
-			position: relative;
-			top: 309px;
-			left: 159px;
-			width: 120px;
-			height: 190px;
-			opacity: 0;   /* img透明度 */
-			filter:alpha(opacity=0);
-		}
-		.girl-clicked-img{
-			position: relative;
-			top: 314px;
-			left: 311px;
-			width: 120px;
-			height: 190px;
-			opacity: 0;   /* img透明度 */
-			filter:alpha(opacity=0);
-		}
-		textarea{
-			position: relative;
-			top: 2230px;
-			left: 57px;
-			width: 560px;
-			height: 290px;
-			border:0px ;
-			text-align: left;
-			color: rgba(255, 255, 255, 1);
-			font-size: 24px;
-			border-radius:5px;
-			background: none;
-			resize: none;
-			overflow: hidden;
-		}
-		.button-submit{
-			position: relative;
-			text-align: center;
-			top: 2550px;
-			left: 264px;
-			width: 150px;
-			height: 60px;
-			border-radius:15px;
-			color: rgba(255, 255, 255, 1);
-			font-size: 28px;
-			font-family: "汉仪棱心体简";
-		}
+		function CloseDiv(){ 		//关闭弹出层
+			$("#fade").css('display','none');
+			$("#MyDiv").css('display','none'); 
+		} 
+	</script>
+	<style type="text/css" media="screen" >
+		@import url(css/index.css);
 	</style>
 </head>
 <body>
 	<div>
 		<div class="main">
+				<div class="row haibao">
+					<img src="imgs/hb.jpg" alt="" id="haibao">
+				</div>
 			<form action="index_submit" method="get" accept-charset="utf-8" id="form">
 				<!-- 个人信息输入表单 -->
 				<input type="text" placeholder="请输入姓名" id="name" required="required">
@@ -327,9 +209,22 @@
 				<textarea name="introduce" rows="10" cols="30" required="required"></textarea>
 				<!-- 提交button -->
 				<div class="row">
-					<button type="submit" class="button-submit">提交</button>
+					<button type="submit" class="button-submit" onclick="ShowDiv();">提交</button>
 				</div>
 			</form>
+		</div>
+	</div>
+	<div id="fade" class="black_overlay" style="width: 1520px;"></div> 	<!-- 第二个参数,灰色背景 -->
+	<div id="MyDiv" class="white_content"> 			<!-- 第一个参数，弹出层主体 -->
+		<div style="text-align: right; cursor: default; height: 40px;"> 
+			<a class="aui_close" href="javascript:void(0);"  onclick="CloseDiv('MyDiv','fade')">×</a>
+		</div> 
+		
+		<div class="text-center">
+			<h2>恭喜你，报名成功！更多资讯请扫描二维码添加NA官微了解喔！</h2>
+		</div>
+		<div class="text-center">
+			<img src="imgs/ewm.jpg" alt="">
 		</div>
 	</div>
 </body>
